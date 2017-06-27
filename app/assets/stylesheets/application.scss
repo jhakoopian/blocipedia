@@ -16,3 +16,8 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+.signed-in {
+  float: right;
+  padding-top: 10px;
+}
