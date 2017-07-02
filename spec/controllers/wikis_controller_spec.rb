@@ -99,7 +99,7 @@ RSpec.describe WikisController, type: :controller do
       new_body = "new wiki body"
 
       put :update, id: wiki.id, wiki: {title: new_title, body: new_body}
-      expect(response).to redirect_to wiki
+      expect(response).to redirect_to wikis_path
     end
   end
 
