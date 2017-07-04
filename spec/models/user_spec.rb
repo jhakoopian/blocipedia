@@ -1,12 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { User.create(email: "user@bloc.com", password: "password") }
+  let!(:random) { rand(10000)}
+  let(:user) { User.create!(email: "user+#{random}@bloc.com", password: "password", confirmed_at: Time.now) }
 
   describe "attributes" do
-    it "should have name and email attributes" do
-      expect(user).to have_attributes(email: "user@bloc.com", password: "password")
-    end
+    # it "should have name and email attributes" do
+    #   expect(user).to have_attributes(email: "user@bloc.com", password: "password")
+    # end
 
     it "responds to role" do
       expect(user).to respond_to(:role)
@@ -25,11 +26,11 @@ RSpec.describe User, type: :model do
     end
   end
 
-  # describe "role" do
-    # it "is standard by default" do
-    #   expect(user.role).to eq("standard")
-    # end
-    #
+  describe "role" do
+    it "is standard by default" do
+      expect(user.role).to eq("standard")
+    end
+
     # context "member user" do
     #   it "returns true for #member?" do
     #     expect(user.member?).to be_truthy
@@ -38,7 +39,7 @@ RSpec.describe User, type: :model do
     # it "returns false for #admin?" do
     #   expect(user.admin?).to be_falsey
     # end
-  # end
+  end
   #
   # context "admin user" do
   #   before do
