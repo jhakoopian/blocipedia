@@ -10,7 +10,8 @@ users = User.all
   Wiki.create!(
     user: users.sample,
     title: Faker::Company.buzzword,
-    body: Faker::Company.bs
+    body: Faker::Company.bs,
+    private: false
   )
 end
 wikis = Wiki.all

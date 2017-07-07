@@ -3,6 +3,14 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :downgrade do
+    collection do
+      get :downgrade
+    end
+  end
+
+  resources :users, only: [:show, :update]
+
   resources :wikis
 
   get 'welcome/index'
