@@ -1,5 +1,6 @@
 class WikisController < ApplicationController
   skip_before_action :authenticate_user!
+
   def index
     @wikis = policy_scope(Wiki)
   end
@@ -13,8 +14,7 @@ class WikisController < ApplicationController
   end
 
   def create
-    @wiki = Wiki.new(wiki_params)
-    @wiki.user = current_user
+    @wiki = current_user.wikis.new(wiki_params)
 
     if @wiki.save
       flash[:notice] = "Wiki was saved."
