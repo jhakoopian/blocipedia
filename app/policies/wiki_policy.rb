@@ -1,7 +1,10 @@
 class WikiPolicy < ApplicationPolicy
   def update?
-    # user.present? && (user.admin? || record.user == user)
     user.present?
+  end
+
+  def delete?
+    current_user == wiki.user?
   end
 
   class Scope

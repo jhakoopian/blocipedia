@@ -16,13 +16,13 @@ users = User.all
 end
 wikis = Wiki.all
 
-10.times do
-  Collaborator.create!(
-  email: users.sample.email,
-  wiki_id: wikis.sample.id
-  )
-end
-collaborators = Collaborator.all
+# 10.times do
+#   Collaborator.create!(
+#   email: users.sample.email,
+#   wiki_id: wikis.sample.id
+#   )
+# end
+# collaborators = Collaborator.all
 
 member = User.create!(
   email:    'standard@blocipedia.com',
