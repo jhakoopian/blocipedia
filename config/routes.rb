@@ -11,7 +11,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :update]
 
-  resources :wikis
+  resources :wikis do
+    resources :collaborators, only: [:index, :create, :destroy]
+  end
 
   get 'welcome/index'
 

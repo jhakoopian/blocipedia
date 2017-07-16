@@ -6,7 +6,7 @@
 end
 users = User.all
 
-25.times do
+5.times do
   Wiki.create!(
     user: users.sample,
     title: Faker::Company.buzzword,
@@ -15,6 +15,14 @@ users = User.all
   )
 end
 wikis = Wiki.all
+
+10.times do
+  Collaborator.create!(
+  email: users.sample.email,
+  wiki_id: wikis.sample.id
+  )
+end
+collaborators = Collaborator.all
 
 member = User.create!(
   email:    'standard@blocipedia.com',
@@ -37,3 +45,4 @@ member = User.create!(
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Wiki.count} wikis created"
+puts "#{Collaborator.count} collaborators created"

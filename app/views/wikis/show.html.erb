@@ -2,9 +2,21 @@
 <div class="row">
   <div class="col-md-8">
     <%= markdown @wiki.body %>
+    <% if @wiki.private? %>
+      <p><strong>This wiki is private</strong></p>
+    <% end %>
   </div>
   <div class="col-md-4">
     <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
     <%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this wiki?'} %>
   </div>
 </div>
+
+<h2>Collaborators</h2>
+<% @collaborators.each do |collaborator| %>
+  <div class="row">
+    <div class="col-md-8">
+      <%= collaborator.email %>
+    </div>
+  </div>
+<% end %>

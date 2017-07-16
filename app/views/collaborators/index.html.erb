@@ -1,0 +1,23 @@
+<h1>Manage Collaborators for <%= @wiki.title %></h1>
+
+<table class="table table-striped">
+  <thead>
+    <th>Email</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td>
+          <% if @wiki.users.include? user %>
+            <%= link_to "Remove", wiki_collaborator_path(@wiki, @wiki.collaborator_for(user)), method: :delete, class: "btn btn-danger" %>
+          <% else %>
+            <%= link_to "Add", wiki_collaborators_path(@wiki, user_id: user.id), method: :post, class: "btn btn-success" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "Back to #{@wiki.title}", @wiki %>
